@@ -16,3 +16,17 @@ The database `testdb` contains a `products` table with sample data that SQLMap w
 2. Run SQLMap with:  
    `sqlmap -u "http://<target-ip>/search.php?cat=1" --batch --dump-all`  
 3. Review extracted data in the output file.
+
+4. ### Safe SQL Handling Example
+
+`search-safe.php` demonstrates how to securely query a MySQL database using PHP with **prepared statements** (parameterized queries).  
+This script safely handles user input (`cat` GET parameter) to prevent SQL injection vulnerabilities that are present in `search.php`.
+
+Key points about `search-safe.php`:
+- Uses MySQLi prepared statements to bind parameters securely.
+- Prevents attackers from injecting malicious SQL code.
+- Properly escapes output using `htmlspecialchars()` to reduce XSS risk.
+- Recommended approach for all database-driven PHP applications.
+
+Use `search-safe.php` as a reference for securing vulnerable PHP code in real-world projects.
+
